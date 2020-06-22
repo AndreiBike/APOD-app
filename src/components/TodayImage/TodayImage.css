@@ -1,0 +1,54 @@
+.today-image {
+    color: white;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: black solid;
+    border-radius: 10px;
+    background-color: black;
+    padding: 5px;
+}
+
+.today-preloader {
+  padding: 20px 0;
+  background-color: black;
+  max-width: 1200px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.today-video{
+  width: 100%;
+  padding: 5px;
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 20px;
+}
+
+.today-video h1 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px 0;
+}
+
+.today-image h1 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px 0;
+}
+
+
+
+.today-image iframe{
+  width: 100%;
+  height: auto;
+}
+
+.today-image img{
+    width: 100%;
+    height: auto;
+}
