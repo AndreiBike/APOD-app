@@ -5,9 +5,13 @@ import './ImagesList.css';
 import { uploadPictureAction } from '../Redux/actions';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+const generateKey = (pre) => {
+  return `${ pre }_${new Date().getTime()}`
+}
+
 const ImagesListAPI = (props) => {
 
-  const renderImage = (image) => {return <Image  image= {image} />}
+  const renderImage = (image) => {return <Image key = {generateKey(image.title)}  image= {image} />}
   let pictureList = props.pictures.map(renderImage); 
 
   return (

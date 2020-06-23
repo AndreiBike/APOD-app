@@ -1,49 +1,49 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { uploadTodayPictureAction } from './../Redux/actions';
-import { useEffect } from 'react';
 import './TodayImage.css';
 import Preloader from '../share/preloader/Preloader';
 
-const TodayImageAPI = (props) => {
 
-    const {
-        isLoading,
-        mediaType,
-        todayPicture,
-        date,
-        uploadPicture,
-        title,
-    } = props;
+class TodayImageAPI extends React.Component {
 
-    useEffect(() => {
-        uploadPicture({ date: date })
-    }, []);
-
-    if(isLoading){
-        return(
-            <div className = "today-preloader">
-                <Preloader />
-            </div>
-        )
+    constructor(props){
+        super(props);
+        console.log(props);
     }
 
-    if (mediaType === 'video') {
+    componentDidMount(){
+        this.props.uploadPicture({ date: this.props.date })
+    }
+
+    render(){
+
+        if(this.props.isLoading){
+            return(
+                <div className = "today-preloader">
+                    <Preloader />
+                </div>
+            )
+        }
+    
+        if (this.props.mediaType === 'video') {
+            return (
+                <div className="today-video">
+                    <h1> {this.props.title} </h1>
+                    <iframe title={this.props.title} width="560" height="315" frameBorder="0" allowFullScreen  src='https://www.youtube.com/embed/Cd5a5KdPxQc?rel=0' >
+                        Your browser doesn't allow iframes
+                    </iframe>
+                </div>
+            )
+        }
+    
         return (
-            <div className="today-video">
-                <h1> {title} </h1>
-                <iframe title={title} width="560" height="315" frameBorder="0" allowFullScreen  src='https://www.youtube.com/embed/Cd5a5KdPxQc?rel=0' >
-                    Your browser doesn't allow iframes
-                </iframe>
+            <div className="today-image">
+                <img src={this.props.todayPicture} alt="today nasa" />
             </div>
         )
     }
 
-    return (
-        <div className="today-image">
-            <img src={todayPicture} alt="today nasa" />
-        </div>
-    )
 }
 
 const mapStateToProps = (state) => {
